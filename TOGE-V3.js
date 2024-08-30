@@ -1401,33 +1401,48 @@ let repoInfo = await axios.get("https://api.github.com/repos/toge012345/TOGE-MD-
 }
         break;
         
-        
+        case 'sticker':
+case 'steal':
+case 's': {
+    // Ensure quoted message exists
+    if (!quoted) return reply(`Reply to Video/Image with Caption ${prefix + command}`);
+
+    // Check for media type
+    let mime = (quoted.msg || quoted).mimetype || '';
+    if (/image/.test(mime)) {
+        // Handle image media
+        try {
+            let media = await quoted.download();
+            let encmedia = await Maria.sendImageAsSticker(m.chat, media, m, {
+                author: global.stickername || '𓆩𝐓𝐎𝐆𝐄𓆪 ✇ ◤✞𝐈𝐍𝐔𝐌𝐀𝐊𝐈'
+            });
+            await fs.unlinkSync(encmedia);
+        } catch (error) {
+            console.error('Error handling image sticker:', error);
+            reply('An error occurred while processing the image.');
+        }
+    } else if (/video/.test(mime)) {
+        // Handle video media
+        if ((quoted.msg || quoted).seconds > 10) return reply('Maximum video duration is 10 seconds!');
+        try {
+            let media = await quoted.download();
+            let encmedia = await Maria.sendVideoAsSticker(m.chat, media, m, {
+                packname: global.stickername || '𝐓𝐎𝐆𝐄-𝐌𝐃-𝐕𝟑',
+            });
+            await fs.unlinkSync(encmedia);
+        } catch (error) {
+            console.error('Error handling video sticker:', error);
+            reply('An error occurred while processing the video.');
+        }
+    } else {
+        // Handle unsupported media types
+        return reply(`Reply to a Video/Image with Caption ${prefix + command}`);
+    }
+}
+break;
             
 
-                                case 'sticker':
-            case 'stiker':
-            case 's': {
-                if (!quoted) return reply(` Reply to Video/Image with Caption ${prefix + command} *TOGE-MD-V3*`)
-                if (/image/.test(mime)) {
-                    let media = await quoted.download()
-                    let encmedia = await Maria.sendImageAsSticker(m.chat, media, m, {
-                        
-                        author: global.stickername
-                    })
-                    await fs.unlinkSync(encmedia)
-                } else if (isVideo || /video/.test(mime)) {
-                    if ((quoted.msg || quoted).seconds > 11) return reply('Maximum 10 seconds!')
-                    let media = await quoted.download()
-                    let encmedia = await Maria.sendVideoAsSticker(m.chat, media, m, {
-                        packname: global.stickername,
-                       
-                    })
-                    await fs.unlinkSync(encmedia)
-                } else {
-                    return reply(` 🍭𝑹𝒆𝒑𝒍𝒚 𝒕𝒐 𝑽𝒊𝒅𝒆𝒐/𝑰𝒎𝒂𝒈𝒆 𝑾𝒊𝒕𝒉 𝑪𝒂𝒑𝒕𝒊𝒐𝒏 ${prefix + command} *TOGE-MD-V3*`)
-                }
-            }
-            break;
+                                
             case 'smeme': {
                 let respond = `Send/Reply image/sticker with caption ${prefix + command} text1|text2`
                 if (!/image/.test(mime)) return reply(respond)
@@ -1780,9 +1795,9 @@ case 'chatgpt':
 
       case "info":
             Maria.sendMessage(from, { react: { text: "", key: m.key }}) 
-        let pifx = `❁ ════ ❃•💙 *TOGE-MD-V3* 💙•❃ ════ ❁\n\n\nA FULL FLEDGED MULTI DEVICE WHATSAPP BOT WITH COOL FEATURES\n\n\n❁ ═══ ❃•📕 *GROUP*📕•❃ ═══ ❁\n\n\n*_LINK:-* https://chat.whatsapp.com/JQ4s2pJuBReE7YL9wKJPHo\n\n\n❁ ══════ ❃•📄 *CHANEL* 📄•❃ ══════ ❁\n\n\n*_LINK:-* https://chat.whatsapp.com/JQ4s2pJuBReE7YL9wKJPHo\n\n\n❁ ═════ ❃•📑 *GITHUB* 📑•❃ ═════ ❁\n\n\n*_LINK:-* https://github.com/toge012345/TOGE-MD-V3\n\n\n❁ ═══ ❃•✍🏻 *TOGE-MD-V2* ✍🏻•❃ ═══ ❁\n\n\n*_LINK:-* https://github.com/toge012345/TOGE-MD-V2`
+        let pifx = `✦ ───『 𝙸𝚗𝚏𝚘 𝚍𝚎𝚟 』─── ⚝\n\n\n◈𝐆𝐈𝐓𝐇𝐔𝐁:https://github.com/toge012345\n\n◈𝐘𝐎𝐔𝐓𝐔𝐁𝐄:https://youtube.com/@kenzo3146?si=FQ1JoEiF0T7ve-6W\n\n◈𝐒𝐔𝐏𝐏𝐎𝐑𝐓 𝐆𝐑𝐎𝐔𝐏:https://chat.whatsapp.com/JQ4s2pJuBReE7YL9wKJPHo\n\n◈𝐆𝐑𝐎𝐔𝐏 𝐅𝐎𝐑 𝐍𝐔𝐌𝐁𝐄𝐑𝐒:https://chat.whatsapp.com/JoSaOEx3ill1JE0a19ATJr\n\n\n𝐓𝐎𝐆𝐄_𝐁𝐎𝐓 𝐈𝐧𝐜 ✨`
 
-Maria.sendMessage(m.chat, { image: { url: "https://telegra.ph/file/942c4dd39bd40933222d8.mp4" }, caption: pifx, gifPlayback: true }, { quoted: m });
+Maria.sendMessage(m.chat, { image: { url: "https://telegra.ph/file/182542601d9dd6ae8bced.jpg" }, caption: pifx, gifPlayback: true }, { quoted: m });
         break;
 
 
@@ -2432,7 +2447,7 @@ break;
             buttons: [
               {
                name: "quick_reply",
-               buttonParamsJson: `{"display_text":"𝗢𝗪𝗡𝗘𝗥 ✨","id":"${prefix}owner"}`
+               buttonParamsJson: `{"display_text":"𝗢𝗪𝗡𝗘𝗥 💫","id":"${prefix}owner"}`
                 }
               ],
             }) ,
@@ -4577,6 +4592,28 @@ case 'welcome':
                }
             }
             break;
+case 'react': {
+        if (!m.isGroup) {
+            return reply(mess.group);
+        }
+        if (!isCreator) {
+            return reply(mess.owner);
+        }
+        if (args.length < 1) {
+            return reply('Please specify "on" or "off".');
+        }
+
+        if (args[0] === 'on') {
+            global.react = true;
+            reply(`${command} is enabled`);
+        } else if (args[0] === 'off') {
+            global.react = false;
+            reply(`${command} is disabled`);
+        } else {
+            reply('Invalid option. Use "on" or "off".');
+        }
+        break;
+    }		    
 
 
 case 'git': case 'gitclone':
@@ -4725,7 +4762,7 @@ case 'ping':
         key: { fromMe: false, participant: `0@s.whatsapp.net`, remoteJid: 'status@broadcast' },
         message: {
             contactMessage: {
-                displayName: '𝚃𝙾𝙶𝙴 𝙼𝙳 𝚅𝟹',
+                displayName: '𝐓𝐎𝐆𝐄-𝐀𝐈 💨',
                 vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:TOGE-MD-V3 📱\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:owner number\nEND:VCARD`
             }
         }
@@ -5355,7 +5392,7 @@ case '': {
 case 'newfeatures':
     case 'features': {
         const newFeatures = `
-        🆕 *New Features in TOGE-MD-V3* 🆕
+        🆕 *New Features in TOGE-AI* 🆕
 
         ✅ *Accept All:* Automatically accepts all group invites.
         ✅ *Reject All:* Automatically rejects all group invites.
