@@ -30,6 +30,7 @@ const { smsg, getGroupAdmins, formatp, jam, formatDate, getTime, isUrl, await, s
 let afk = require("./lib/lib/afk");
 const { download } = require('aptoide-scraper');
 const { fetchBuffer, buffergif } = require("./lib/lib/myfunc2")
+
 /////log
  global.modnumber = '6283833304947' 
 //Media/database
@@ -1440,10 +1441,7 @@ case 's': {
     }
 }
 break;
-            
-
-                                
-            case 'smeme': {
+case 'smeme': {
                 let respond = `Send/Reply image/sticker with caption ${prefix + command} text1|text2`
                 if (!/image/.test(mime)) return reply(respond)
                 if (!text) return reply(respond)
@@ -2231,7 +2229,7 @@ break;
       const txt = `┏━⍟「 𝗧𝗢𝗚𝗘-𝗠𝗗-𝗩𝟯 」⊛
 ┃✦» *Hi 👋*
 ┃✦» *${m.pushName}*
-┃✦» *_How are you doing ?_*
+┃✦» *${Ayushytimewisher}*
 ┗━━━┃
 ┏━━━┃
 ┃✦» 𝕭𝖔𝖙:  ${botname}
@@ -5407,7 +5405,7 @@ case 'newfeatures':
         reply(newFeatures);
         }
         break;
- 
+	    
 /////////////////////////////////////////////////////
 
 if(isCmd){

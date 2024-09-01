@@ -1,6 +1,6 @@
 ## 🌟 `Bot Intro and Features`
 </div>
-  <a href="https://toge-md-web.onrender.com">
+  <a href="https://session-web.onrender.com/">
         <p align="center">
    <img alt="toge01245" height="300" src="https://telegra.ph/file/83f41a017edaf21646b3f.jpg">
               </p>
@@ -37,7 +37,7 @@
 
 2. Upload the creds.json that you received to the session folder.
    <br>
-<a href='https://toge-v3-web-app.onrender.com/' target="_blank"><img alt='PAIR CODE' src='https://img.shields.io/badge/session_id-100000?style=for-the-badge&logo=scan&logoColor=white&labelColor=black&color=black'/></a>
+<a href='https://session-web.onrender.com/' target="_blank"><img alt='PAIR CODE' src='https://img.shields.io/badge/session_id-100000?style=for-the-badge&logo=scan&logoColor=white&labelColor=black&color=black'/></a>
 
 ### DEPLOY TO WORKFLOWS
 
@@ -123,6 +123,83 @@ jobs:
 2. Now Deploy
     <br>
 <a href='https://replit.com/github/toge012345/TOGE-MD-V3' target="_blank"><img alt='DEPLOY' src='https://img.shields.io/badge/-IMPORT-black?style=for-the-badge&logo=replit'/></a>
+##
+### Termux/Ssh/Ubuntu
+
+<details>
+  <summary>Please click here for more assist.</summary>
+    
+   ### `🌟 There are two common ways to deploy on Termux/Ssh/Ubuntu.`
+   ***- Using clone method from github repository.***
+   ```
+apt update
+apt upgrade
+pkg update && pkg upgrade
+pkg install bash
+pkg install libwebp
+pkg install git -y
+pkg install nodejs -y 
+pkg install ffmpeg -y 
+pkg install wget
+pkg install imagemagick -y
+npm install ytdl-core@latest
+git clone https://github.com/toge012345/TOGE-V3-AI
+cd TOGE-V3-AI
+yarn install
+npm start
+```
+
+  ### ***`Second Method:`***
+  ***- Using download method to local storage.***
+  
+  Step: 1
+    ***Download [`TOGE-V3-AI`](https://github.com/toge012345/TOGE-V3-AI/archive/refs/heads/Master.zip) repository first.***
+
+  Step: 2
+    ***Extract the downloaded `.zip` file.***
+
+  Step: 3
+    ***Edit `lib/database/owner.json` file (enter ownernumber).***
+    
+  Step: 4
+    ***Go to your `termux/Ssh/Ubuntu` terminal and navigate to your folder path.***
+  ***- For Example:***
+  
+  ```
+  cd /sdcard/download/TOGE-V3-AI
+  ```
+
+  Step: 5
+    ***Enter the followings commands in your `terminal`.***
+
+ ```
+apt update
+apt upgrade
+pkg update && pkg upgrade
+pkg install bash
+pkg install libwebp
+pkg install git -y
+pkg install nodejs -y 
+pkg install ffmpeg -y 
+pkg install wget
+pkg install imagemagick -y
+npm install ytdl-core@latest
+```
+
+  Step: 6
+    ***`Install dependencies:`***
+
+```
+yarn install
+```
+
+  Step: 7
+    ***`Run your bot:`***
+
+```
+npm i -g pm2 && pm2 start index.js && pm2 save && pm2 logs
+```
+
 
  ## `Main Dev` 
 <a href="https://github.com/toge012345"><img src="https://github.com/toge012345.png" width="250" height="250" alt="toge012345"/></a>
